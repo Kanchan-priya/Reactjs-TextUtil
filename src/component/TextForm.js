@@ -13,6 +13,19 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const handleclear = () => {
+    let newText ="";
+    setText(newText);
+  };
+
+  const speak = () => {
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    window.speechSynthesis.speak(msg);
+  }
+
+
+
   const [text, setText] = useState("");
   return (
     <>
@@ -27,13 +40,17 @@ export default function TextForm(props) {
           rows="8"
         ></textarea>
       </div>
-      <button className="btn btn-primary mx-3" onClick={handleupclick}>
-        Click button to convert in uppercase
+      <button className="btn btn-primary mx-1" onClick={handleupclick}>
+        Convert in Uppercase
       </button>
 
-      <button className="btn btn-primary" onClick={handleupclicks}>
-        Click button to convert in lowercase
+      <button className="btn btn-primary mx-1" onClick={handleupclicks}>
+        Convert in lowercase
       </button>
+      <button className="btn btn-primary mx-1" onClick={handleclear}>
+        Clear text
+      </button>
+      <button type="submit" onClick={speak} className="btn btn-primary mx-1">Speak</button>
       </div>
 
       <div className="container">
