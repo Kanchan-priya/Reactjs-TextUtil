@@ -29,13 +29,13 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
   return (
     <>
-    <div className="container">
+    <div className="container" style={{color:props.mode==='dark'? 'white':'dark'}}>
       <h3>{props.heading}</h3>
       <div className="mb-3">
         <textarea
           className="form-control"
           value={text}
-          onChange={handleonchange}
+          onChange={handleonchange} style={{backgroundColor:props.mode==='dark'? '#042743':'white', color:props.mode==='dark'? 'white':'dark'}}
           id="myBox"
           rows="8"
         ></textarea>
@@ -53,12 +53,12 @@ export default function TextForm(props) {
       <button type="submit" onClick={speak} className="btn btn-primary mx-1">Speak</button>
       </div>
 
-      <div className="container">
+      <div className="container" style={{color:props.mode==='dark'? 'white':'dark'}}>
     <h3>Your text summery</h3>
     <p> {text.split(" ").length} words and {text.length} character</p>
     <p> {0.008*text.split(" ").length} Mitnues</p>
     <h3>Preview</h3>
-    <p> {text} </p>
+    <p> {text.length>0? text :"Enter your text here"} </p>
       </div>
     </>
   );
